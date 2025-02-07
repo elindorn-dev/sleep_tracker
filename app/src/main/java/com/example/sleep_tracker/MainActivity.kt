@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.sleep_tracker.ui.components.ScrollingDateSelector
 import com.example.sleep_tracker.ui.screens.MainScreen
 import com.example.sleep_tracker.ui.screens.SplashScreen
 import com.example.sleep_tracker.ui.theme.Sleep_trackerTheme
