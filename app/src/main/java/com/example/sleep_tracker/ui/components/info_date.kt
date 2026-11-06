@@ -11,18 +11,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import java.time.LocalDate
 import java.time.Year
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun ScrollingDateSelector() {
+fun ScrollingDateSelector(modifier: Modifier) {
     val dates = remember { generateDates() } // Generate a list of dates
     val scrollState = rememberScrollState()
 
+    val todayIndex = dates.indexOf(LocalDate.now())
+
+    LaunchedEffect(Unit) {
+        if (todayIndex != -1) { scrollState.scrollTo(todayIndex * (142))
+        }
+    }
+
     Row(
-        modifier = Modifier
+        modifier = modifier
             .horizontalScroll(scrollState)
             .fillMaxWidth()
             .padding(16.dp),
@@ -61,5 +70,5 @@ fun generateDates(): List<LocalDate> {
 @Preview
 @Composable
 fun PreviewScrollingDateSelector() {
-    ScrollingDateSelector()
+    ScrollingDateSelector(modifier = Modifier)
 }
